@@ -7,7 +7,7 @@ import ApiError from '../utils/ApiError.js';
 import httpStatus from 'http-status';
 
 export async function loginWithEmailPassword(email, password) {
-  const user = await db.User.findOne({ where: { email }, include: db.Role });
+  const user = await db.User.findOne({ where: { email } });
   if (!user || !(await bcrypt.compare(password, user.password))) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect email or password');
   }
