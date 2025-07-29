@@ -16,7 +16,11 @@ export default (sequelize, DataTypes) => {
   User.prototype.isPasswordMatch = function (pw) { return bcrypt.compare(pw, this.password); };
 
   User.associate = (models) => {
-    if (models.Role) User.belongsToMany(models.Role, { through: 'user_roles', foreignKey: 'user_id' });
+    if (models.Role) User.belongsToMany(models.Role, { 
+      through: 'user_roles', 
+      foreignKey: 'user_id',
+      timestamps: false
+    });
   };
 
   return User;
