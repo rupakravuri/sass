@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { uploadSingle } from '../../libs/upload.js';
+import { uploadSingle } from '../../middlewares/upload.js';
 import * as settingService from './setting.service.js';
 
 export const uploadSettingImage = (key, sizes=[]) => [
