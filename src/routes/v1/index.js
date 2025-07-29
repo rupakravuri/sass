@@ -12,5 +12,7 @@ router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/roles', roleRoutes);
 router.use('/settings', settingRoutes);
+router.use('/zones', zoneRoutes);
+router.use('/store-types', storeTypeRoutes);
 
 export default router;
