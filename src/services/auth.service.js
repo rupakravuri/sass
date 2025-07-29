@@ -17,7 +17,7 @@ export async function loginWithEmailPassword(email, password) {
 
 function generateTokens(user) {
   const payload = {
-    id: user.id,
+    sub: user.id,
     email: user.email,
     roles: user.Roles ? user.Roles.map(role => role.name) : []
   };
