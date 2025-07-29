@@ -15,5 +15,6 @@ router.use('/roles', roleRoutes);
 router.use('/settings', settingRoutes);
 router.use('/zones', zoneRoutes);
 router.use('/store-types', storeTypeRoutes);
+router.use('/stores', storeRoutes);
 
 export default router;
