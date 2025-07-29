@@ -26,6 +26,12 @@ export default (sequelize, DataTypes) => {
         as: 'store_types' 
       });
     }
+    if (models.Store) {
+      Zone.hasMany(models.Store, { 
+        foreignKey: 'zone_id', 
+        as: 'stores' 
+      });
+    }
   };
 
   return Zone;
