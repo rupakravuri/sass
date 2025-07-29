@@ -14,3 +14,28 @@ export async function loginWithEmailPassword(email, password) {
   const tokens = generateTokens(user);
   return { user: sanitize(user), tokens };
 }
+
+function generateTokens(user) {
+  const payload = {
+    id: user.id,
+    email: user.email,
+    roles: user.Roles ? user.Roles.map(role => role.name) : []
+  };
+  
+  const token = jwt.sign(payload, config.jwt.secret, {
+    expiresIn: config.jwt.expiresIn
+  });
+  
+  return {
+    access: {
+      token,
+      expires: new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)) // 7 days
+    }
+  };
+}
+
+function sanitize(user) {
+  const obj = user.toJSON();
+  delete obj.password;
+  return obj;
+}
